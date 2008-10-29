@@ -1,5 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "site-skel"
+  s.date = "10/29/08"
   s.version = "0.1.0"
   s.author = "Jason Frame"
   s.email = "jason@onehackoranother.com"
