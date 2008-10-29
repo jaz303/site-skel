@@ -1,3 +1,5 @@
 task :dump_manifest do
-  puts '"' + Dir["{bin,common,layouts,variants}/**/*"].join('","') + '"'
+  files = Dir["{bin,common,layouts,variants}/**/*"]
+  files = files.reject { |f| File.directory?(f) }
+  puts '"' + files.join('","') + '"'
 end
