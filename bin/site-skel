@@ -1,0 +1,76 @@
+require 'erb'
+require 'fileutils'
+
+layout  = 'default'
+variant = 'default'
+
+while ARGV.length > 0
+  p = ARGV.shift
+  case p
+  when '-l'
+    layout = ARGV.shift
+  when '-v'
+    variant = ARGV.shift
+  else
+    target = p
+    break
+  end
+end
+
+unless target && layout && variant
+  puts "Usage: site-skel [-l layout] [-v variant] target"
+  exit 1
+end
+
+ERB_EXT       = 'css,htm,html,php'
+DATA_ROOT     = File.join(File.dirname(__FILE__), '..')
+LAYOUT_ROOT   = File.join(DATA_ROOT, 'layouts', layout)
+VARIANT_ROOT  = File.join(DATA_ROOT, 'variants', variant)
+
+if File.exists?(target)
+  puts "Can't create '#{target}' - exists"
+  exit 1
+end
+
+if !File.directory?(LAYOUT_ROOT)
+  puts "Layout '#{layout}' does not exist"
+  exit 1
+end
+
+if !File.directory?(VARIANT_ROOT)
+  puts "Variant '#{variant}' does not exist"
+  exit 1
+end
+  
+FileUtils.mkdir(target)
+
+["#{DATA_ROOT}/common/*", "#{LAYOUT_ROOT}/*"].each do |src|
+  FileUtils.cp_r(Dir[src], target)
+end
+
+context = Object.new
+
+%w{header footer}.each do |partial|
+  file = File.join(VARIANT_ROOT, partial + '.html')
+  if File.exists?(file)
+    context.instance_variable_set("@#{partial}", File.read(file))
+  end
+end
+
+Dir[target + "/**/*.{#{ERB_EXT}}"].each do |file|
+  tpl = ERB.new(File.read(file))
+  File.open(file, 'w') do |f|
+    f.write(tpl.result(context.send(:binding)))
+  end
+end
+
+{ "main.css" => "stylesheets/main.css"
+}.each do |src, dest|
+  src_file  = File.join(VARIANT_ROOT, src)
+  dest_file = File.join(target, dest)
+  if File.exists?(src_file) && File.exists?(dest_file)
+    File.open(dest_file, 'a') do |f|
+      f.write "\n" + File.read(src_file)
+    end
+  end
+end
