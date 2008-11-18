@@ -7,15 +7,14 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <?= javascript_include_tag('swfobject.js') ?>
-    <?= javascript_include_tag('jquery-1.2.6.min.js') ?>
-    <?= javascript_include_tag('jquery.lightbox-0.4.min.js') ?>
+    <?= javascript_include_tag('jquery.min.js') ?>
+    <?= javascript_include_tag('jquery.lightbox.min.js') ?>
     <?= javascript_include_tag('jquery-extensions.js') ?>
     <?= javascript_include_tag('application.js') ?>
     <!--[if lt IE 7]>
     <?= javascript_include_tag('pngfix.js', array('defer' => 'defer')) ?>
     <![endif]-->
     <?= stylesheet_link_tag('main.css') ?>
-    <link rel="stylesheet" href="stylesheets/main.css" type="text/css" />
     <!--[if IE]>
     <?= stylesheet_link_tag('ie.css') ?>
     <![endif]-->
