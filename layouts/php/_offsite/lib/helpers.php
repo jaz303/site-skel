@@ -23,7 +23,7 @@ function current_or_subpage($page) {
 // Asset URLs
 
 function url_for_image($image) {
-  return url_for_asset($image, 'javascripts');
+  return url_for_asset($image, 'images');
 }
 
 function url_for_stylesheet($stylesheet) {
