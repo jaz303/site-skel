@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "site-skel"
-  s.version = "0.1.0"
+  s.version = "0.1.1"
   s.author = "Jason Frame"
   s.email = "jason@onehackoranother.com"
   s.homepage = "http://github.com/jaz303/site-skel/"
