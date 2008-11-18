@@ -23,6 +23,5 @@
     <![endif]-->
   </head>
   <body>
-    <div id='container'>
 
 <%= @header %>

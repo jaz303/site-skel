@@ -1,6 +1,5 @@
 
 <%= @footer %>
-      
-    </div>
+
   </body>
 </html>
