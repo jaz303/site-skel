@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = "site-skel"
-  s.date = "2009-01-13"
-  s.version = "0.1.2"
+  s.date = "2009-01-15"
+  s.version = "0.1.3"
   s.author = "Jason Frame"
   s.email = "jason@onehackoranother.com"
   s.homepage = "http://github.com/jaz303/site-skel/"
