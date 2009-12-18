@@ -2,14 +2,54 @@
 @import url('jquery.lightbox.css');
 
 body, table { font: 12px/1.4 Helvetica, Arial, sans-serif; color: black; }
+body { background: white; }
 
 img { border: 0; }
 
-a { text-decoration: none; }
+a { text-decoration: none; color: blue; }
     a:hover { text-decoration: underline; }
+    
+small { font-size: 90%; }
 
 .first { margin-top: 0 }
+
+.clearfix { zoom: 1; }
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 
 .cl { clear: left; }
 .cr { clear: right; }
 .cb { clear: both; }
+
+.hr { height: 1px; background: black; margin: 1em 0; }
+  .hr hr { display: none; }
+
+.content { }
+  .content h1 { }
+  .content h2 { }
+  .content h3 { }
+  .content h4 { }
+  .content h5 { }
+  .content h6 { }
+  .content p { margin-bottom: 0.5em; }
+  .content a { }
+  .content strong { font-weight: bold; }
+  .content ul { }
+  .content ol { }
+    .content li { display: list-item; }
+    .content ul li { list-style-type: disc; }
+    .content ol li { list-style-type: decimal; }
+  .content table { }
+    .content tr { }
+    .content th, td { }
+    .content th { font-weight: bold; }
+    .content td { }
+    
+.iw { padding: 3px; background: #c0c0c0; margin-bottom: 5px; }
+  .iw input, .iw textarea { display: block; width: 100%; background: none; padding: 0; border: none; }
+  .iw input { }
+  .iw textarea { height: 100px; }
+.iw-select { margin-bottom: 5px; }
+  .iw-select select { display: block; width: 100%; }
+
+.buttons { text-align: right; }
+

@@ -122,15 +122,63 @@
 	
 })(jQuery);
 
-jQuery.fn.simpleImageRollover = function(preload) {
-    if (preload) {
+/*
+ * (c) 2008-9 Jason Frame
+ * Auxiliary element code based on work by pjesi (http://wtf.hax.is/)
+ */
+(function ($) {
+	
+	/**
+	 * Initialise input hints on all matched inputs.
+	 *
+	 * Usage examples:
+	 *
+	 * Add hints to all inputs with the 'title' attribute set:
+	 *   $('input[title],textarea[title]').inputHint();
+     *
+     * Add hints to all matched elements, grabbing the hint text from each element's
+     * adjacent <kbd/> tag:
+     *   $('input').inputHint({using: '+ kbd'});
+	 *
+	 * Options keys:
+	 *  using: jQuery selector locating element containing hint text, relative to
+	 *         the input currently being considered.
+	 *  hintAttr - tag attribute containing hint text. Default: 'title'
+	 *  hintClass - CSS class to apply to inputs with active hints. Default: 'hint'
+	 */
+	$.fn.inputHint = function(options) {
+		
+		options = $.extend({hintClass: 'hint', hintAttr: 'title'}, options || {});
+		
+		function hintFor(element) {
+			var h;
+			if (options.using && (h = $(options.using, element)).length > 0) {
+				return h.text();
+			} else {
+				return $(element).attr(options.hintAttr) || '';
+			}
+		}
+
+		function showHint() {
+			if ($(this).val() == '') {
+				$(this).addClass(options.hintClass).val(hintFor(this));
+			}
+		}
+
+		function removeHint() {
+			if ($(this).hasClass(options.hintClass)) $(this).removeClass(options.hintClass).val('');
+		}
+		
+		this.filter(function() { return !!hintFor(this); })
+			.focus(removeHint).blur(showHint).blur();
+
         this.each(function() {
-            var i = new Image;
-            i.src = this.src;
+            var self = this;
+            $(this).parents('form').submit(function() { removeHint.apply(self); });
         });
-    }
-    this.hover(
-        function() { this.src = this.src.replace(/\.(\w+)$/, '_h.$1'); },
-        function() { this.src = this.src.replace(/_h\.(\w+)$/, '.$1'); }
-    );
-}
+
+		return this.end(); // undo filter
+
+	};
+	
+})(jQuery);

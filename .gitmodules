@@ -1,0 +1,3 @@
+[submodule "layouts/php/_offsite/lib/php-helpers"]
+	path = layouts/php/_offsite/lib/php-helpers
+	url = git://github.com/jaz303/php-helpers.git
