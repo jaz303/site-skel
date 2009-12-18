@@ -26,6 +26,6 @@ set_include_path('.' . PATH_SEPARATOR . LIB_ROOT);
 $_TPL = array();
 
 require 'php-helpers/helpers.php'; // or helpers-5.3.php if you're running 5.3.x
-require 'common/helpers.php'
+require 'common/helpers.php';
 require 'common/template.php';
 ?>
