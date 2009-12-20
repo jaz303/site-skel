@@ -1,0 +1,63 @@
+This project needs some love.
+
+* Decent binary/option parsing, it's a shoddy right now.
+* YAML per-user config
+
+Terminology:
+
+layouts
+ - overall file layouts (PHP, static HTML)
+
+variants
+ - default
+ - 2 column
+ - banner
+ - splash page
+ 
+etcetera
+
+Ideally i'd like to be able to create multiple variants for a single project.
+
+Also, a cool idea would be able to create composite variants, e.g.:
+
+"banner,3-column,footer"
+
+but maybe overkill
+
+
+Variants should be customisable using variables, somehow
+
+options
+-------
+ - additional stuff that can be added to any project
+ - for example:
+   - sifr
+   - jquery plugins
+   - default CSS (content.css)
+  
+options should be able to include files and append code to others (i.e. jquery onload)
+   
+   
+per user defaults
+-----------------
+
+~/site-skel/defaults.yml
+
+layout: php
+
+options:
+  - jquery
+  - content.css
+  - sifr
+  - input-hint
+
+variant:
+  global:
+    width: 900
+
+should also be able to have a site-skel.yml file in the root dir of a project
+
+spinoff project: config-merger
+  (i already use this pattern in lighty, might as well abstract it)
+
+
