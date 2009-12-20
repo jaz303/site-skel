@@ -21,7 +21,7 @@ variants the best idea is probably to fork the repo.
 Installation
 ------------
 
-    sudo gem install jaz303-site-skel
+    sudo gem install site-skel
 
 Usage
 -----
